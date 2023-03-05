@@ -1,0 +1,94 @@
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  .fa-location-dot {
+    font-size: 26px;
+    color: rgb(194, 8, 8);
+  }
+  /* sidebar  */
+  .sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh !important;
+    overflow-y: scroll;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: -1px 0px 0px 0px rgba(0, 0, 0, 0.1) inset;
+    padding: 50px 20px;
+    z-index: 2;
+    transition: all 0.5s;
+    &.minimized {
+      width: 60px;
+      //   background-color: transparent;
+      opacity: 0.4;
+    }
+    .fa-bars {
+      font-size: 26px;
+    }
+    h1 {
+      font-size: 20px;
+    }
+    .searchbar {
+      border: 1px solid rgba(225, 230, 239, 1);
+      border-radius: 10px;
+      padding: 15px 18px;
+      i {
+        margin-right: 10px;
+        font-size: 15px;
+      }
+      input {
+        border: none;
+        outline: none;
+        color: #000;
+        font-size: 16px;
+        width: 100%;
+      }
+    }
+    h3 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 16px;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 740px) {
+  .sidebar {
+    padding: 20px !important;
+    width: 220px !important;
+    &.minimized {
+      width: 60px !important;
+    }
+    h1 {
+      font-size: 18px !important;
+    }
+    .fa-bars {
+      font-size: 20px !important;
+    }
+    .searchbar {
+      padding: 8px 10px !important;
+      i {
+        font-size: 12px !important;
+      }
+      input {
+        font-size: 14px !important;
+      }
+    }
+    h3 {
+      font-size: 18px !important;
+    }
+    h4 {
+      font-size: 14px !important;
+    }
+  }
+}
