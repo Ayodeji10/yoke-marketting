@@ -1,7 +1,11 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
 import { Locations } from "../utils/locations";
+import { Locaton } from "../AppTypes";
+import { useMap } from "react-map-gl";
 
 function Sidebar() {
+  const { myMap } = useMap();
+
   const [minimized, setMinimized] = useState(false);
   const [locations, setLocations] = useState(Locations);
 
@@ -21,7 +25,6 @@ function Sidebar() {
 
   //   handle search
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     if (e.target.value.length === 0) {
       setLocations(Locations);
     } else {
@@ -30,6 +33,13 @@ function Sidebar() {
           location.name.toLowerCase().includes(e.target.value.toLowerCase())
         )
       );
+    }
+  };
+
+  //   handle map jump
+  const handleClick = (location: Locaton) => {
+    if (typeof myMap !== "undefined") {
+      myMap.flyTo({ center: [location.lon, location.lat], zoom: 8 });
     }
   };
 
@@ -54,8 +64,13 @@ function Sidebar() {
           </div>
           <h3 className="mb-3">Cities</h3>
           {locations.map((location, i) => {
-            return <h4 key={i}>{location.name}</h4>;
+            return (
+              <h4 key={i} onClick={() => handleClick(location)}>
+                {location.name}
+              </h4>
+            );
           })}
+          {locations.length === 0 && <h4>-- No Available Cities --</h4>}
         </>
       )}
     </div>

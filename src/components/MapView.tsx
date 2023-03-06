@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { Locations } from "../utils/locations";
+import { MapProps } from "../AppTypes";
+import SingleMarker from "./SingleMarker";
 import Map, {
   NavigationControl,
   GeolocateControl,
   FullscreenControl,
 } from "react-map-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import { Locations } from "../utils/locations";
-import { MapProps } from "../AppTypes";
-import SingleMarker from "./SingleMarker";
 
 function MapView() {
   const [viewPort, setViewPort] = useState<MapProps>({
